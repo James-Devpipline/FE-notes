@@ -1,0 +1,29 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar .links-wrapper .links-wrapper{
+  margin-bottom: 5px;
+}
+/*
+@media (max-width: 600px) {
+  body {
+    background-color: blue;
+  }
+}
+
+ Basically it says once the page reaches a width of 600px the body will have the background-color change to blue. Could add in other factors that are more specific to change as well */

@@ -1,0 +1,11 @@
+/*  Phone */
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 350px
+  }
+
+
+}

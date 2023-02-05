@@ -1,0 +1,24 @@
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  border: 1px solid red;
+}
+
+.page-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.footer {
+  /* grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: -1; */
+  grid-area: 1 / 1 / 1 / -1;
+}
+
+/* col 1. row 3 */
