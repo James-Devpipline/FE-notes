@@ -3,12 +3,21 @@
 
 
 
+# def list_sum(working_list):
+#   list_length = len(working_list)
+#   working_num = 0
+
+#   for i in range(0,list_length):
+#     working_num =+ float(working_list[i])
+
+#   return(working_num)
+
+
 def list_sum(working_list):
-  list_length = len(working_list)
   working_num = 0
 
-  for i in range(0,list_length):
-    working_num =+ float(working_list[i])
+  for num in working_list:
+    working_num =+ float(working_list[num])
 
   return(working_num)
 
