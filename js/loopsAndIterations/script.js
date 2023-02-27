@@ -38,3 +38,13 @@ for (i in cohort4) {
 for (const key in cohort4 ) {
   console.log(`KEY: ${key}, Val: ${cohort4[key]}`)
 }
+
+for (const student of students) {
+  console.log(student)
+}
+// works as this works towards arrays as they are interable
+
+// for (const key of cohort4) {
+//   console.log(student)
+// }
+//    this returns an error as the object is not iterable
