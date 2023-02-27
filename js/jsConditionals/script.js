@@ -77,15 +77,90 @@ if(lastNameOther) {
   console.log("WOW!!!!!")
 }
 
+const equalAge = '35'
+let looseEqual;
 
-
-const newAge = 35
-let canSmoke;
-
-if(newAge >= 21) {
-  canSmoke = true
+if(equalAge == 35) {
+  looseEqual = true
 } else {
-  canSmoke = false
+  looseEqual = false
 }
 
-console.log(canSmoke)
+console.log(`Loose equal: ${looseEqual}`) // results in True
+
+const strictAge = '35'
+let strictEqual;
+
+
+if(strictAge === 35) {
+  strictEqual = true
+} else {
+  strictEqual = false
+}
+
+console.log(`Strict equal: ${strictEqual}`) // results in False
+
+// With loose equal it looks at just value, but with strict equal it looks at both value and actual type 
+
+const typeCastStrictAge = '35'
+let typeCastStrictEqual;
+  if(typeCastStrictAge === String(35)) {
+    typeCastStrictEqual = true
+  } else {
+    typeCastStrictEqual = false
+  }
+
+
+console.log(`Type Cast Strict Equal: ${typeCastStrictEqual}`) //Results in true because the type cast ensured it to check if it was a string and equal to 35 (the S in string when type casting has to be capital)
+
+
+
+// ternary operators
+//   - question ? true : false
+const smokerAge = 12
+// let canSmoke = smokerAge >= 21 ? true : false
+let canSmoke = smokerAge >= 21 ? "Can buy smokes" : "Too young"
+  // if(smokerAge >= 21) {
+  //   canSmoke = true
+  // } else {
+  //   canSmoke = false
+  // }
+console.log(`canSmoke: ${canSmoke}`)
+
+
+const hasQuit = true
+const otherSmokerAge = 22
+
+let chainedCanSmoke = otherSmokerAge >= 21 ? hasQuit ? "What are you doing? But you can still buy" : "Can buy smokes" : "Too young"
+
+// let chainedCanSmoke = otherSmokerAge >= 21 && !hasQuit // returns false
+
+console.log(`chainedCanSmoke: ${chainedCanSmoke}`)
+
+
+// switch statements
+
+const switchAge = 21
+
+  // if(age === 19) {
+  //   console.log("something")
+  // } else if (age === 21) {
+  //   console.log("something else")
+  // } else {
+  //   console.loge("Doesn't match anything")
+  // }
+
+function ageCheck() {
+  switch(switchAge) {
+    case 19:
+      console.log("user is 19")
+      break;
+    case 21:
+      console.log("user is 21")
+      break;
+    default:
+      console.error("Man, nothing is matching today")
+  }
+}
+
+ageCheck()
