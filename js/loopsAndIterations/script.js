@@ -11,9 +11,6 @@ Loops perform some process repetively until we say stop
   - while
   - do while
   - functional
-
-
-
 */
 
 // - traditional for
@@ -48,3 +45,39 @@ for (const student of students) {
 //   console.log(student)
 // }
 //    this returns an error as the object is not iterable
+
+
+
+////////// - do while
+
+let e = 0;
+
+while (e < students.length) {
+  console.log(students[e].toUpperCase())
+  e++
+}
+
+// while i is less than the lengh of students, do this
+
+let a = 0;
+
+do { 
+  console.log(students[a].toUpperCase())
+  a = students.length + 5
+} while (a < students.length)
+
+
+///////// Callback function
+function logCapitalStudents(student) {
+  console.log(student.toUpperCase())
+}
+
+students.forEach(logCapitalStudents)
+
+function forEach(arr, cb) {
+  for (const i in arr) {
+    cb(arr[i], i)
+  }
+}
+
+forEach(students, (student) => console.log(student))
