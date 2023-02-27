@@ -11,7 +11,9 @@ compound conditionals
 falsey / truthy
 strict equality
 ternary operators
+  - question ? true : false
 switch statements
+optional chaining
 */
 
 const weather = 65;
@@ -74,3 +76,16 @@ const nonValues = 0 // falsey as 0 does not have value
 if(lastNameOther) {
   console.log("WOW!!!!!")
 }
+
+
+
+const newAge = 35
+let canSmoke;
+
+if(newAge >= 21) {
+  canSmoke = true
+} else {
+  canSmoke = false
+}
+
+console.log(canSmoke)
