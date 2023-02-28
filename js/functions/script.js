@@ -40,7 +40,7 @@ const myExpression = function(num, idx) {
 [1, 2, 3].forEach(() => {})
 
 
-// - arrow functions
+// ----- arrow functions
 const fullName = (first, last) => {
   return first[0].toUpperCase() + first.slice(1) + ' ' + last[0].toUpperCase() +  last.slice(1)
 }
@@ -53,6 +53,16 @@ fullNameImplicitMultiline = (first, last) => (
   + last[0].toUpperCase() +  last.slice(1)
 )
 
+// const arrowSum = a => a + 10 // this work as well, if there is only one perameter then it does not need parenthesis
+
+// const arrowSum = a, b => a + b
+// this does not work, needs parens. Throws error "Uncaught SyntaxError: Missing initializer in const declaration"
+
+// if there are none, or more than one parameters you must use parens
+const arrowSum = () => 10 + 10
+
+
 console.log(fullName("james", "hales"))
 console.log(fullNameImplicit("james", "hales"))
 console.log(fullNameImplicitMultiline("james", "hales"))
+console.log(arrowSum(10))
