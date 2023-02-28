@@ -6,6 +6,7 @@ JS FUNctions
 - arrow functions
 - IIFE (immediatetly invoked function expression)
 - Constructor Functions
+- HOF - higher order functions
 
 - pure functions
 - scope
@@ -59,10 +60,90 @@ fullNameImplicitMultiline = (first, last) => (
 // this does not work, needs parens. Throws error "Uncaught SyntaxError: Missing initializer in const declaration"
 
 // if there are none, or more than one parameters you must use parens
-const arrowSum = () => 10 + 10
+const arrowSum = () => 4 + 4
 
 
 console.log(fullName("james", "hales"))
 console.log(fullNameImplicit("james", "hales"))
 console.log(fullNameImplicitMultiline("james", "hales"))
-console.log(arrowSum(10))
+console.log(arrowSum(10)) //the 10 in the paren is for the other functions that use the function name but are commented out, the last one with 4 + 4 does not take into account the number inside the parens where the function is being invoked
+
+
+// ----- IIFE (immediatetly invoked function expression)
+// these are functions that are immedialy called when js comes across them, not when they are called later down the line
+
+
+const myIife = (function() {
+  console.log("hey, i ran right away!!!")
+
+  return {
+    role: "super-admin"
+  }
+})()
+
+
+
+// ----- Constructor Functions
+// 
+
+// class User{}
+
+// const me = new User()
+
+// console.log(typeof me) // returns object
+// console.log(typeof User) // returns function
+
+function User(name, age) {
+  this.name = name
+  this.age = age
+}
+
+const james = new User("james", 21)
+
+console.log(james)
+
+// const obj = {
+//   fName: "james",
+//   getName: function() {
+//     return this.fName
+//   }
+// } // returns "james"
+const obj = {
+  fName: "james",
+  getName: function() {
+    return this
+  }
+} // returns {fName: 'james', getName: ƒ}
+// that is because "this" is just the obj, the same obj in "log(obj.getname()"
+
+
+console.log(obj.getName())
+
+
+
+// ----- HOF - higher order functions
+
+function addHof(a) {
+  return (b) => a + b
+}
+
+const addTen = addHof(10)
+
+console.log(addTen)
+
+const myValue = addTen(15)
+
+console.log(myValue)
+
+
+function includeLog(func) {
+  console.log("Adding your log.....")
+  console.log(func())
+  console.log("finishing function...")
+}
+
+function sum(a, b) {
+  return a + b
+}
+
+includeLog(() => sum(1, 1))
