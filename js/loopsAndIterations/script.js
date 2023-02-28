@@ -24,9 +24,9 @@ for (i in cohort4) {
   console.log(i)
 }
 
-// for (let i = 0; i < students.length; i++){
-//   console.log(students[i].toUpperCase())
-// }
+for (let i = 0; i < students.length; i++){
+  console.log(students[i].toUpperCase())
+}
 
 // for (i in students) {
 //   console.log(students[i].toUpperCase())
@@ -57,7 +57,7 @@ while (e < students.length) {
   e++
 }
 
-// while i is less than the lengh of students, do this
+// while e is less than the lengh of students, do this
 
 let a = 0;
 
