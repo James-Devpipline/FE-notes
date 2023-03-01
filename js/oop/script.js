@@ -67,11 +67,14 @@ class TownHome {
   }
 
   // instance method
-  setAlarm() {
+  setAlarmToggle() {
     this.isAlarmSet = !this.isAlarmSet
+
+    return this.isAlarmSet
   }
 
   // static (class method)
+
 }
 
 // console.log("I'm pre-instantiation")
@@ -85,4 +88,7 @@ fiftyFivePilot.color = "blue"
 
 console.log(fiftyFivePilot)
 console.log(fiftyFivePilot.color)
+
+
+fiftySevenPilot.setAlarmToggle()
 console.log(fiftySevenPilot)
