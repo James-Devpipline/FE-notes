@@ -50,3 +50,39 @@ student.id = 5
 console.log(ryan.postGrades(student))
 
 console.log(typeof Admin)
+
+////////////////////////////////////////////////////////////////////////////////
+
+// ------ declare
+console.log('------ declare -----')
+
+class TownHome {
+  // constructor is the first method that is automaticall called on instantiation
+  constructor(elevation = "rock", color, garage) {
+    // console.log("I ran!")
+    this.elevation = elevation || "rock"
+    this.color = color
+    this.garage = garage
+    this.isAlarmSet = false
+  }
+
+  // instance method
+  setAlarm() {
+    this.isAlarmSet = !this.isAlarmSet
+  }
+
+  // static (class method)
+}
+
+// console.log("I'm pre-instantiation")
+const fiftyFivePilot = new TownHome("barn", "red", 2)
+const fiftySevenPilot = new TownHome(null, "yellow", 1)
+                                    // uses truthy system, can be null, 0, or undefined
+console.log(fiftyFivePilot)
+
+fiftyFivePilot.color = "blue"
+
+
+console.log(fiftyFivePilot)
+console.log(fiftyFivePilot.color)
+console.log(fiftySevenPilot)
