@@ -6,8 +6,9 @@ classes / objects via templates (blueprints)
 - construct
 - instantiation
 - inherit
+- polymorphism 
 - static vs instance methods
-- 
+- Abstract class
 
 JS Object factory pattern
 Syntactic sugar
