@@ -118,6 +118,7 @@ class Fish {
     this.lastName = lastName
     this.skeleton = skeleton
     this.eyelids = eyelids
+
   }
 
   swim() {
@@ -183,3 +184,39 @@ console.log(sammy.firstName)
 console.log(sammy.lastName)
 console.log(sammy.swim())
 console.log(sammy.swimBackwards())
+
+
+// ----- Abstract class
+console.log(`
+----- Abstract class -----
+`)
+
+class Element {
+  render() {
+    throw new Error("Subclass must contain a render method")
+  }
+}
+
+class Heading extends Element {
+  constructor(type, content) {
+    super();
+
+    this.el = document.createElement(`h${type}`)
+    this.textNode = document.createTextNode(content)
+    // this.element = type.appendChild(content)
+    // this.label = '1234 (whatever you want can go in here) ≈çåßƒå√∫∫˜'
+
+    this.el.appendChild(this.textNode)
+  }
+
+  render() {
+    document.body.appendChild(this.el)
+  }
+  // without this you get an error stating "Uncaught Error: Subclass must contain a render method"
+}
+
+const blogHeading5 = new Heading("4", "I'm a heading, created not in index.html but in script.js!");
+
+[blogHeading5].forEach(el => {
+  el.render()
+})
