@@ -15,6 +15,13 @@ fetch("https://swapi.tech/api/people")
   .then((data) => {
     console.log("From Within Fetch: ", data.results);
     people = data.results;
-  }, 3000000);
+  });
 
 console.log("AFTER the fetch: ", people); // this happens before the fetch above
+
+let peepole;
+
+setTimeout(() => {
+  people = ["john", "shawn", "denise"];
+  console.log(peepole);
+}, 3000);
