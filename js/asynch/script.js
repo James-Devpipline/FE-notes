@@ -26,7 +26,7 @@ let peepole;
 setTimeout(() => {
   people = ["john", "shawn", "denise"];
   console.log(peepole);
-}, 3000);
+});
 
 ///////// Promises /////////
 console.log("///////// Promises /////////");
@@ -57,7 +57,7 @@ const myPromise = new Promise((resolve, reject) => {
     if (shouldResolve) {
       resolve("howdy");
     } else {
-      reject("I'm not supposed to resolve, sorry");
+      reject(new Error ("I'm not supposed to resolve, sorry"));
     } //can also create a new error with new Error("error text here")
   }, 2000);
 });
@@ -74,16 +74,31 @@ function myPromiseFunc() {
   }
 }
 
+const promiseCallback = greeting => ({formatted: greeting[0].toUpperCase() + greeting.slice(1), greeting})
+
 myPromise
-  .then((greeting) => {
-    return greeting[0].toUpperCase() + greeting.slice(1);
+  .then(promiseCallback)
+  .then((data) => {
+    console.log(data) // this prints the previous return above from the prev promise
+    return "Boy, that was crazy. Oh yeah: " + data.formatted
   })
-  .then(() => {})
-  .catch((err) => console.error(err));
+  .then(finalData => {
+    console.log(finalData)
+    throw new Error("Eh, end of the line and you should've been off a long time ago")
+  })
+  .catch((err) => console.error("My customer Error Log: ", err))
+.finally(() => console.log("oof, doesn't matter to me ooweee"))
+
+console.log(">>>>>> This is after the promise in the natural flow of code")
+
 
 console.log("Then me Second");
 console.log(myPromiseFunc());
 console.log("Then me Fourh, below where the example function is called");
+
+// .then takes in the resolved value from the previous promise
+// .catch takes in the rejection
+// .finaly executes a callback whether the promise resolve or rejects
 
 //
 //
@@ -103,6 +118,7 @@ console.log("Then me Fourh, below where the example function is called");
 
 function makePizza(toppings = []) {
   return new Promise((resolved, reject) => {
+    console.log("****************MAKE A PIZZA!******************");
     const bakeTime = 1000 + toppings.lenght * 100;
 
     if (toppings.includes("pineapple")) {
