@@ -118,7 +118,7 @@ JS Event Loop (research a little bit of this later)
 // Api Response stuff
 console.log("///////// Api response stuff /////////")
 
-const myPromise = () => new Promise((res, rej) => setTimeout(() => res("Some Data has been resolved, can continue logging"), 4000))
+const myOtherPromise = () => new Promise((res, rej) => setTimeout(() => res("Some Data has been resolved, can continue logging"), 4000))
 
 async function main() {
   console.log("starting req...")
@@ -130,8 +130,11 @@ async function main() {
   console.log(data)
   console.log("Wait to resolve before logging this")
 
-  const promiseData = await myPromise()
+  const promiseData = await myOtherPromise()
 
+  console.log(promiseData)
+
+  document.body.innerText = document.createTextNode(promiseData.url)
   console.log(promiseData)
 
 
@@ -146,3 +149,30 @@ main()
 // fetch('https://httpbin.org/get')
 //   .then(res => res.json())
 //   .then(console.log)
+
+
+
+async function greeting() {
+  try {
+    await myOtherPromise()
+    throw new Error("Howdy Error")
+    // return "Howdy"
+  } catch (e) {
+    throw new Error(e)
+  }
+}
+
+greeting()
+  .then(data => console.log(data))
+  .catch(err => console.error("Lazy greeting error: ", err.message))
+
+const sleep = ms => new Promise(res => setTimeout(res, ms))
+
+async function lazyLoop() {
+  for(let i = 0; i < 10; i++) {
+      await sleep(1000)
+      console.log(i)
+  }
+}
+
+lazyLoop()
