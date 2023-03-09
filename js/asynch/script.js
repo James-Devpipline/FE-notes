@@ -101,20 +101,7 @@ console.log("Then me Fourh, below where the example function is called");
 // .finaly executes a callback whether the promise resolve or rejects
 // 3 stages: pending, fulfilled, rejected
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// pizza time!
 
 function makePizza(toppings=[]) {
   return new Promise((resolve, reject) => {
