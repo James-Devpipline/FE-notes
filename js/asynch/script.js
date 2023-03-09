@@ -10,95 +10,96 @@ https://swapi.tech/documentation
 JS Event Loop (research a little bit of this later)
 */
 
-// let people;
+let people;
 
-// fetch("https://swapi.tech/api/people")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     console.log("From Within Fetch: ", data.results);
-//     people = data.results;
-//   });
+fetch("https://swapi.tech/api/people")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("From Within Fetch: ", data.results);
+    people = data.results;
+  });
 
-// console.log("AFTER the fetch: ", people); // this happens before the fetch above
+console.log("AFTER the fetch: ", people); // this happens before the fetch above
 
-// let peepole;
+let peepole;
 
-// setTimeout(() => {
-//   people = ["john", "shawn", "denise"];
-//   console.log(peepole);
-// });
+setTimeout(() => {
+  people = ["john", "shawn", "denise"];
+  console.log(peepole);
+});
 
-// ///////// Promises /////////
-// console.log("///////// Promises /////////");
-// // Promise states -> pending, fulfilled, rejected
-// // Promise chaining -> Promise, .then(callback), .catch(error callback), .finally(callback)
+///////// Promises /////////
+console.log("///////// Promises /////////");
+// Promise states -> pending, fulfilled, rejected
+// Promise chaining -> Promise, .then(callback), .catch(error callback), .finally(callback)
 
-// // Documentation on Promise https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+// Documentation on Promise https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-// function successfulPromise(data) {
-//   console.log(data);
-// }
+function successfulPromise(data) {
+  console.log(data);
+}
 
-// function erroredPromise(err) {
-//   console.error(err.message);
-// }
+function erroredPromise(err) {
+  console.error(err.message);
+}
 
-// // class Promise {
-// //   constructor(executor) {
-// //     this.executor = executor;
-// //   }
-// // }
-
-// let shouldResolve = false;
-
-// const myPromise = new Promise((resolve, reject) => {
-//   console.log("You should see me first");
-//   setTimeout(() => {
-//     if (shouldResolve) {
-//       resolve("howdy");
-//     } else {
-//       reject(new Error ("I'm not supposed to resolve, sorry"));
-//     } //can also create a new error with new Error("error text here")
-//   }, 2000);
-// });
-// // new is used to instantiate a new object. Generally is used like this, doesn't matter what the obj is
-// // below is what the above promise is basically doing
-// function myPromiseFunc() {
-//   console.log(
-//     "Then me Third (this console log is stored in the example function, lines above the second one)"
-//   );
-//   if (shouldResolve) {
-//     return "howdy from the example function";
-//   } else {
-//     return "oof from the example function";
+// class Promise {
+//   constructor(executor) {
+//     this.executor = executor;
 //   }
 // }
 
-// const promiseCallback = greeting => ({formatted: greeting[0].toUpperCase() + greeting.slice(1), greeting})
+let shouldResolve = false;
 
-// myPromise
-//   .then(promiseCallback)
-//   .then((data) => {
-//     console.log(data) // this prints the previous return above from the prev promise
-//     return "Boy, that was crazy. Oh yeah: " + data.formatted
-//   })
-//   .then(finalData => {
-//     console.log(finalData)
-//     throw new Error("Eh, end of the line and you should've been off a long time ago")
-//   })
-//   .catch((err) => console.error("My custom Error Log: ", err))
-// .finally(() => console.log("oof, doesn't matter to me ooweee"))
+const myPromise = new Promise((resolve, reject) => {
+  console.log("You should see me first");
+  setTimeout(() => {
+    if (shouldResolve) {
+      resolve("howdy");
+    } else {
+      reject(new Error ("I'm not supposed to resolve, sorry"));
+    } //can also create a new error with new Error("error text here")
+  }, 2000);
+});
+// new is used to instantiate a new object. Generally is used like this, doesn't matter what the obj is
+// below is what the above promise is basically doing
+function myPromiseFunc() {
+  console.log(
+    "Then me Third (this console log is stored in the example function, lines above the second one)"
+  );
+  if (shouldResolve) {
+    return "howdy from the example function";
+  } else {
+    return "oof from the example function";
+  }
+}
 
-// console.log(">>>>>> This is after the promise in the natural flow of code")
+const promiseCallback = greeting => ({formatted: greeting[0].toUpperCase() + greeting.slice(1), greeting})
+
+myPromise
+  .then(promiseCallback)
+  .then((data) => {
+    console.log(data) // this prints the previous return above from the prev promise
+    return "Boy, that was crazy. Oh yeah: " + data.formatted
+  })
+  .then(finalData => {
+    console.log(finalData)
+    throw new Error("Eh, end of the line and you should've been off a long time ago")
+  })
+  .catch((err) => console.error("My custom Error Log: ", err))
+.finally(() => console.log("oof, doesn't matter to me ooweee"))
+
+console.log(">>>>>> This is after the promise in the natural flow of code")
 
 
-// console.log("Then me Second");
-// console.log(myPromiseFunc());
-// console.log("Then me Fourh, below where the example function is called");
+console.log("Then me Second");
+console.log(myPromiseFunc());
+console.log("Then me Fourh, below where the example function is called");
 
 // .then takes in the resolved value from the previous promise
 // .catch takes in the rejection
 // .finaly executes a callback whether the promise resolve or rejects
+// 3 stages: pending, fulfilled, rejected
 
 //
 //
@@ -114,6 +115,53 @@ JS Event Loop (research a little bit of this later)
 //
 //
 //
+
+function makePizza(toppings=[]) {
+  return new Promise((resolve, reject) => {
+    const bakeTime = 1000 + (toppings.length * 300)
+    
+    if(toppings.includes("banana")) {
+      reject(new Error("What are you doing??? No sir!")) // this does not break the program as it is not throwing an error like reject(throw new Error("What are you doing??? No sir!"))
+    }
+
+    setTimeout(() => {
+      resolve(`
+      Your pizza is complete, enjoy the following toppings:
+      ${toppings.join(", ")}`)
+    }, bakeTime)
+  })
+}
+
+const meatPromise = makePizza(['pepperoni', 'sausage', 'canadian bacon'])
+const veggiePromise = makePizza(['pepper', 'olives'])
+const hawaiinPromise = makePizza(["pineapple", "canadian bacon"])
+const abominationPromise = makePizza(["banana", "peppers", "mushroom", "pepperoni"])
+
+// console.log(meatPromise)
+// console.log(veggiePromise)
+// console.log(hawaiinPromise)
+// console.log(abominationPromise) these won't work as it does not use promise chaining
+
+const resolvedPizza = pizza => console.log(pizza)
+const rejectedPizza = err => console.error('Make Pizza Error: ', err.message)
+
+
+meatPromise
+  .then(resolvedPizza)
+  .catch(rejectedPizza)
+
+veggiePromise
+  .then(resolvedPizza)
+  .catch(rejectedPizza)
+
+hawaiinPromise
+  .then(resolvedPizza)
+  .catch(rejectedPizza)
+
+abominationPromise
+  .then(resolvedPizza)
+  .catch(rejectedPizza)
+
 
 // Api Response stuff
 console.log("///////// Api response stuff /////////")
