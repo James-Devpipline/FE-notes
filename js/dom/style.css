@@ -1,0 +1,8 @@
+.red {
+  color: red;
+  font-weight: 100;
+}
+
+.remove-me-im-useless:hover {
+  color: yellow;
+}

@@ -4,7 +4,7 @@ Browser JS
 DOM 
   - Document Object Model
 
-.. el, #
+.. el(element), #
 
 Select elements (query)
 Create Elements (dom nodes[html elements, text])
@@ -69,7 +69,71 @@ allParagraphs.forEach((node) => console.log(node));
 
 Array(...allContentWrappers).forEach(console.log); // this works as its typecasting it to an array
 
+console.log("\n \n \n");
+
 // console.log(rootElSelector);
 
 // console.dir(rootEl);
 //// review video for what he said at 2:07pm and note that down
+
+// class list general funcitonality
+/* 
+Check class list
+add a class
+remove a class
+toggle a class
+*/
+
+const rootEl2 = document.getElementById("root");
+const firstChildDiv2 = rootEl.querySelector("div");
+
+console.dir(firstChildDiv2); // under classList. This dir shows what is accessable
+
+setTimeout(() => {
+  firstChildDiv2.classList.add("red");
+  firstChildDiv2.classList.remove("remove-me-im-useless");
+  firstChildDiv2.classList.toggle("hide");
+
+  // if (firstChildDiv2.classList.include("hide")) {
+  //   firstChildDiv2.classList.remove("hide");
+  // } else {
+  //   firstChildDiv2.classList.add("hide");
+  // }
+  // this is what toggle was doing
+}, 3000);
+
+/* 
+Create elements / nodes
+
+createElement => html element
+createTextNode => text node
+
+*/
+const rootEl3 = document.getElementById("root");
+const div = document.createElement("div");
+const paraOneDiv = document.querySelector(".content-wrapper");
+// cant be reused, if you need another div then you need to make another div
+// const divTwo = document.createElement("div");
+// const divThree = document.createElement("div");
+const header = document.createElement("h1");
+const headerText = document.createTextNode("Hey howdy, how you durn???");
+
+div.appendChild(header);
+header.appendChild(headerText);
+
+console.log(div);
+console.log(header);
+console.log(headerText);
+
+rootEl3.appendChild(div);
+
+setTimeout(() => {
+  div.remove();
+
+  // console.log(div); // this shows that its still in memory, it just isn't on the dom
+  paraOneDiv.appendChild(div);
+  // paraOneDiv.classList.add("blue"); // the more appropriate way (see what ryan says at 3:54pm during the video on 03/14/23)
+  paraOneDiv.style.color = "blue";
+  // properties from css can be used in java script however they just need to be camalCased, intsead of seperated by a -
+  //  example: background-color in JS would be backgroundColor
+}, 4000);
