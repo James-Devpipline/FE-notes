@@ -8,10 +8,6 @@ cleanup listeners
 element.removeEventListener -> event type, handler 
 */
 
-function myAlert() {
-  alert("Warning, idk!!!");
-}
-
 // [a, b, c].forEach(alertWarning);
 
 // const customWindow = {
@@ -20,9 +16,6 @@ function myAlert() {
 
 // customWindow.alert = function () {};
 ////////////// don't do this, it overrides globals, refer to lecture on 03/15/23 at 3:55pm
-
-const btn = document.getElementById("toggleBtn");
-const clearBtn = document.getElementById("removeBtn");
 
 // const handleBtnClick = (event) => {
 //   if (event.target.innerText === "On") {
@@ -60,6 +53,13 @@ const clearBtn = document.getElementById("removeBtn");
 //   }
 // });
 /////// this targets everything to change it to say either on or off
+
+function myAlert() {
+  alert("Warning, idk!!!");
+}
+
+const btn = document.getElementById("toggleBtn");
+const clearBtn = document.getElementById("removeBtn");
 
 const handleBtnClick = (event) => {
   if (event.target.innerText === "On") {
