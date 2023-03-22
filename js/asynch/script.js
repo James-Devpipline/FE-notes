@@ -81,7 +81,7 @@ const myPromise = new Promise((resolve, reject) => {
     if (shouldResolve) {
       resolve("howdy");
     } else {
-      reject(new Error ("I'm not supposed to resolve, sorry"));
+      reject(new Error("I'm not supposed to resolve, sorry"));
     } //can also create a new error with new Error("error text here")
   }, 2000);
 });
@@ -98,23 +98,27 @@ function myPromiseFunc() {
   }
 }
 
-const promiseCallback = greeting => ({formatted: greeting[0].toUpperCase() + greeting.slice(1), greeting})
+const promiseCallback = (greeting) => ({
+  formatted: greeting[0].toUpperCase() + greeting.slice(1),
+  greeting,
+});
 
 myPromise
   .then(promiseCallback)
   .then((data) => {
-    console.log(data) // this prints the previous return above from the prev promise
-    return "Boy, that was crazy. Oh yeah: " + data.formatted
+    console.log(data); // this prints the previous return above from the prev promise
+    return "Boy, that was crazy. Oh yeah: " + data.formatted;
   })
-  .then(finalData => {
-    console.log(finalData)
-    throw new Error("Eh, end of the line and you should've been off a long time ago")
+  .then((finalData) => {
+    console.log(finalData);
+    throw new Error(
+      "Eh, end of the line and you should've been off a long time ago"
+    );
   })
   .catch((err) => console.error("My custom Error Log: ", err))
-.finally(() => console.log("oof, doesn't matter to me ooweee"))
+  .finally(() => console.log("oof, doesn't matter to me ooweee"));
 
-console.log(">>>>>> This is after the promise in the natural flow of code")
-
+console.log(">>>>>> This is after the promise in the natural flow of code");
 
 console.log("Then me Second");
 console.log(myPromiseFunc());
@@ -125,157 +129,156 @@ console.log("Then me Fourh, below where the example function is called");
 // .finaly executes a callback whether the promise resolve or rejects
 // 3 stages: pending, fulfilled, rejected
 
-///////// pizza time! ///////// 
+///////// pizza time! /////////
 
-function makePizza(toppings=[]) {
+function makePizza(toppings = []) {
   return new Promise((resolve, reject) => {
-    const bakeTime = 1000 + (toppings.length * 300)
-    
-    if(toppings.includes("banana")) {
-      reject(new Error("What are you doing??? No sir!")) // this does not break the program as it is not throwing an error like reject(throw new Error("What are you doing??? No sir!"))
+    const bakeTime = 1000 + toppings.length * 300;
+
+    if (toppings.includes("banana")) {
+      reject(new Error("What are you doing??? No sir!")); // this does not break the program as it is not throwing an error like reject(throw new Error("What are you doing??? No sir!"))
     }
 
     setTimeout(() => {
       resolve(`
       Your pizza is complete, enjoy the following toppings:
-      ${toppings.join(", ")}`)
-    }, bakeTime)
-  })
+      ${toppings.join(", ")}`);
+    }, bakeTime);
+  });
 }
 
-const meatPromise = makePizza(['pepperoni', 'sausage', 'canadian bacon'])
-const veggiePromise = makePizza(['pepper', 'olives'])
-const hawaiinPromise = makePizza(["pineapple", "canadian bacon"])
-const abominationPromise = makePizza(["banana", "peppers", "mushroom", "pepperoni"])
+const meatPromise = makePizza(["pepperoni", "sausage", "canadian bacon"]);
+const veggiePromise = makePizza(["pepper", "olives"]);
+const hawaiinPromise = makePizza(["pineapple", "canadian bacon"]);
+const abominationPromise = makePizza([
+  "banana",
+  "peppers",
+  "mushroom",
+  "pepperoni",
+]);
 
 // console.log(meatPromise)
 // console.log(veggiePromise)
 // console.log(hawaiinPromise)
 // console.log(abominationPromise) these won't work as it does not use promise chaining
 
-const resolvedPizza = pizza => console.log(pizza)
-const rejectedPizza = err => console.error('Make Pizza Error: ', err.message)
+const resolvedPizza = (pizza) => console.log(pizza);
+const rejectedPizza = (err) => console.error("Make Pizza Error: ", err.message);
 
+meatPromise.then(resolvedPizza).catch(rejectedPizza);
 
-meatPromise
-  .then(resolvedPizza)
-  .catch(rejectedPizza)
+veggiePromise.then(resolvedPizza).catch(rejectedPizza);
 
-veggiePromise
-  .then(resolvedPizza)
-  .catch(rejectedPizza)
+hawaiinPromise.then(resolvedPizza).catch(rejectedPizza);
 
-hawaiinPromise
-  .then(resolvedPizza)
-  .catch(rejectedPizza)
-
-abominationPromise
-  .then(resolvedPizza)
-  .catch(rejectedPizza)
+abominationPromise.then(resolvedPizza).catch(rejectedPizza);
 
 Promise.all([meatPromise, veggiePromise, hawaiinPromise, abominationPromise])
-  .then(pizzas => {
-    console.log(pizzas)
+  .then((pizzas) => {
+    console.log(pizzas);
   })
-  .catch(rejectedPizza)
+  .catch(rejectedPizza);
 
-  // promise.all documentation 
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+// promise.all documentation
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 
-Promise.allSettled([meatPromise, veggiePromise, hawaiinPromise, abominationPromise])
-  .then(pizzas => {
-    console.log(pizzas)
-    pizzas.forEach(pizza => {
-      if(pizza.status === "rejected") {
-        throw new Error("Ah cheese!!!!")
+Promise.allSettled([
+  meatPromise,
+  veggiePromise,
+  hawaiinPromise,
+  abominationPromise,
+])
+  .then((pizzas) => {
+    console.log(pizzas);
+    pizzas.forEach((pizza) => {
+      if (pizza.status === "rejected") {
+        throw new Error("Ah cheese!!!!");
       }
-    })
+    });
   })
-  .catch(rejectedPizza)
+  .catch(rejectedPizza);
 
 // promise.all breaks all once one rejection is met, while promise.allsettled runs through all promises and then returns both the rejected errors and the all the fullfilled promises (the fullfilled promises are inside one big object)
 
-///////// Api Response stuff ///////// 
-console.log("///////// Api response stuff /////////")
+///////// Api Response stuff /////////
+console.log("///////// Api response stuff /////////");
 
-const myOtherPromise = () => new Promise((res, rej) => setTimeout(() => res("Some Data has been resolved, can continue logging"), 4000))
+const myOtherPromise = () =>
+  new Promise((res, rej) =>
+    setTimeout(
+      () => res("Some Data has been resolved, can continue logging"),
+      4000
+    )
+  );
 
 async function main() {
-  console.log("starting req...")
-  const apiResponse = await fetch("https://swapi.tech/api/planets")
-  console.log("Stripping Json")
-  const data = await apiResponse.json()
-  console.log(apiResponse)
-  console.log("Finished!!!")
-  console.log(data)
-  console.log("Wait to resolve before logging this")
+  console.log("starting req...");
+  const apiResponse = await fetch("https://swapi.tech/api/planets");
+  console.log("Stripping Json");
+  const data = await apiResponse.json();
+  console.log(apiResponse);
+  console.log("Finished!!!");
+  console.log(data);
+  console.log("Wait to resolve before logging this");
 
-  const promiseData = await myOtherPromise()
+  const promiseData = await myOtherPromise();
 
-  console.log(promiseData)
+  console.log(promiseData);
 
   // document.body.innerText = document.createTextNode(promiseData.url)
-  console.log(promiseData)
-
+  console.log(promiseData);
 
   // apiResponse
   //   .then(res => res.json())
-  //   .then(sonsole.log)
+  //   .then(console.log)
   // this throws a typeerror error
 }
 
-main()
+main();
 
 // fetch('https://httpbin.org/get')
 //   .then(res => res.json())
 //   .then(console.log)
 
-
-
 async function greeting() {
   try {
-    await myOtherPromise()
-    throw new Error("Howdy Error")
+    await myOtherPromise();
+    throw new Error("Howdy Error");
     // return "Howdy"
   } catch (e) {
-    throw new Error(e)
+    throw new Error(e);
   }
 }
 
 greeting()
-  .then(data => console.log(data))
-  .catch(err => console.error("Lazy greeting error: ", err.message))
+  .then((data) => console.log(data))
+  .catch((err) => console.error("Lazy greeting error: ", err.message));
 
-const sleep = ms => new Promise(res => setTimeout(res, ms))
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 async function lazyLoop() {
-  for(let i = 0; i < 10; i++) {
-      await sleep(1000)
-      console.log(i)
+  for (let i = 0; i < 10; i++) {
+    await sleep(1000);
+    console.log(i);
   }
 }
 
-lazyLoop()
-
-
+lazyLoop();
 
 const prom = new Promise((resolve, reje) => {
   try {
-    resolve()
-  } catch(e) {
-    reje()
+    resolve();
+  } catch (e) {
+    reje();
   }
-})
-
+});
 
 fetch("https://swapi.tech/api/people?name=r2", {
-  method: "POST"
+  method: "POST",
 })
-  .then(res => res.text())
-  .then(data => document.body.appendChild(document.createTextNode(data)))
-  .catch(err => console.log("Swapi"))
-
-
+  .then((res) => res.text())
+  .then((data) => document.body.appendChild(document.createTextNode(data)))
+  .catch((err) => console.log("Swapi"));
 
 ///////// JSON -> JavaScript Object Notation
 
@@ -288,28 +291,28 @@ fetch("https://swapi.tech/api/people?name=r2", {
 // The bit of code Ryan deletes at 3:49pm for the lecture on 03/09/23
 
 const loginData = {
-  email: 'ryan@curtis.com',
-  password: '1234'
-}
+  email: "ryan@curtis.com",
+  password: "1234",
+};
 
-console.log(loginData.toString())
+console.log(loginData.toString());
 
-const stringifiedData = JSON.stringify(loginData)
+const stringifiedData = JSON.stringify(loginData);
 
-console.log(stringifiedData)
+console.log(stringifiedData);
 
 fetch("https://httpbin.org/post", {
   method: "POST",
   body: JSON.stringify(loginData),
   headers: {
-    "content-type": "application/form-data"
-  }
+    "content-type": "application/form-data",
+  },
 })
-  .then(res => {
-    return res.json()
+  .then((res) => {
+    return res.json();
   })
-  .then(data => console.log(data))
-  .catch(err => console.error(err))
+  .then((data) => console.log(data))
+  .catch((err) => console.error(err));
 
 // .then(res => {
 //   if(res.statusCode >= 200 || res.statusCode < 400) {
