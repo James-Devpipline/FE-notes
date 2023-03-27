@@ -134,6 +134,6 @@ setTimeout(() => {
   paraOneDiv.appendChild(div);
   // paraOneDiv.classList.add("blue"); // the more appropriate way (see what ryan says at 3:54pm during the video on 03/14/23)
   paraOneDiv.style.color = "blue";
-  // properties from css can be used in java script however they just need to be camalCased, intsead of seperated by a -
+  // properties from css can be used in java script however they just need to be camalCased, instead of seperated by a -
   //  example: background-color in JS would be backgroundColor
 }, 4000);
