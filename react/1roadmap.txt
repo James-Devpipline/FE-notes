@@ -1,0 +1,14 @@
+NPM - Node Package Manager
+  - package.json
+  - package-lock.json
+
+SPA's - Single Page Applications
+Vitrual Dom
+ReactJS -> JavaScript Library for User Interfaces
+  - Props
+  - State
+  - Componenet Lifecycle
+  - Component Architecture (hierarchy)
+JSX
+Tools
+Capstone
