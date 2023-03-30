@@ -1,0 +1,93 @@
+reating a React Project from Scratch
+run:
+- npm init
+  package name: (npm-course)
+  version: (1.0.0) 0.1.0
+  description:
+  entry point: (index.js)
+  test command:
+  git repository:
+  keywords:kjumh
+  author:
+  license: (ISC)
+  is this OK? (yes)
+---------------------------------------
+Skips all of the questions for creating a react app and installs the defaults:
+  npm init --yes (or npm init -y)
+---------------------------------------
+Licensing:
+ISC or MIT
+---------------------------------------
+Within your react app:
+Create:
+  - index.js
+  - add
+    - console.log("Hey, my first npm project!!!")
+1. Add in the package.json file under "scripts" -> "start" : "echo 'Howdy duders'"
+2. Run in the terminal:
+     npm run start
+4. change start to be -> "start" : "node index.js"
+5. Run in the terminal:
+      npm run start
+---------------------------------------
+Installing Lodash
+1. Run in the terminal (Hint: Careful with your spelling when installing dependencies.):
+     npm i lodash
+2. Go to the index.js and add the following:
+      const lodash = require("lodash")
+      const sum = lodash.add(5,4)
+      console.log(sum)
+3. Run
+      nmp start
+---------------------------------------
+1. Run in the terminal:
+      npm i --save-dev nodemon
+      npm start
+---------------------------------------
+1. Add in the package.json file under "scripts" -> "devServer" : "nodemon index.js"
+2. Run in the terminal:
+      npm run devServer
+      rs (clears the server)
+      hit control c (stops the server from running)
+---------------------------------------
+Never push node_modules to GitHub!!
+Never push your node_modules to source control.
+Put it into your git ignore file!
+1. Create a git ignore file:
+    .gitignore
+2. add node models to git ignore file:
+      node_modules
+3. When you're missing dependencies run:
+      npm install
+---------------------------------------
+Uninstalling dependencies
+  npm unistall <name of dependencies>
+Delete the package-lock.json when there are miss-matching dependencies, deployment issues,
+versioning issues, and you'll know when you know.
+---------------------------------------
+What is a Module?
+- A process within a program.
+- A piece or building block.
+---------------------------------------
+Semantic Versioning
+- A versioning scheme for using meaningful version numbers.
+- The meaning revolves around how API versions compare in terms of backwards-compatibility.
+- Starting Launch (MVP)
+         1.0.0
+1.0.0 -> Major.Minor.Patch
+           1.    0.    0
+Major -> Breaks backwards compatibility.
+Minor -> New features that don't break backwards compatibility.
+Patch -> Small fixes that don't break backwards compatibility.
+"2.0.22" -> stuck at this version, never updates.
+"^2.0.22" -> Brings in the newest minor and patch version. "^2.0.22" updates to "2.1.23" (Use this one!)
+"~2.0.22" -> Automatically updates to the highest patch version. "^2.0.22" updates to "2.0.23"
+Other Version's
+    ">2.0.22" -> Greater than version input version.
+    ">=2.0.22" -> Greater than or equal to the input version.
+    "<2.0.22" -> Less than version input.
+    "<=2.0.22" -> Less than or equal to the input version.
+    "2.0.x" -> Only Changes the patch.
+    "*" -> Matches any version
+codesandbox.io
+- Create a react sandbox
