@@ -1,0 +1,20 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "echo": "Hello world",
+    "start": "node index.js && npm run message && nodemon index.js",
+    "message": "rewatch 03/30 video to see how to make this work @2:53pm",
+    "devServer": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "lodash": "^4.17.21",
+    "nodemon": "^2.0.22"
+  }
+}

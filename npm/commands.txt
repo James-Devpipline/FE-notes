@@ -1,0 +1,24 @@
+brew install node - installs node with npm
+brew install node@16 -doesn't always install npm
+  brew install npm -installs npm independantly if npm isn't installed with node
+
+npm --version - gets vertsion
+npm init - This utility will walk you through creating a a package.json file
+npm init --yes (accepts all prompts automatically)
+
+npm run (runs the package.json)
+
+npm i --save-dev nodemon (installs nodemon)
+
+-- uninstall
+
+to uninstall dependencies delete them from the dependencies in the package.json and then run another npm init or "npm i"
+
+OR do "npm uninstall *dependency name here*" in the console
+
+you will delete package-lock.json when you have conflicts, or when things don't update right, or basically when you need it to be rebuilt
+
+
+--------------------- Lodash ---------------------
+lodash.com
+
