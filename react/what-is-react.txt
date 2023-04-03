@@ -1,0 +1,37 @@
+Fast, functional, dynamic user interfaces
+
+SPA's -> single page applications
+index.html
+
+React competency:
+  state management
+  props
+  component lifecycle
+  componenet architecture
+
+JSX
+Virtual Dom 
+
+const tree = {
+  type :
+}
+
+Tools: 
+  - VS Code / CRA - create-react-app toolchain √
+  - Chrome react dev tools √
+  - codesandbox.io
+  - create react app https://create-react-app.dev/
+
+
+test('renders learn react link', () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+TDD -> Test Driven Devolopment
+BDD -> Behavior Driven Devolopment
+
+
+REWATCH BITS:
+4:12pm
