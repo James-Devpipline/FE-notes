@@ -36,3 +36,15 @@ BDD -> Behavior Driven Devolopment
 REWATCH BITS:
 4:12pm
 4:45pm (about our current situation with finals and stuff)
+
+JSX allows us to avoid doing stuff like this 
+  const helloHeader= React.createElement("h1", null, "Hello Codesandbox)
+  const appDiv= React.createElement("div", {className: "App"}, helloHeader)
+  react.createElement("div", {className: "App"}
+    React.createElement("h1", null, "Hello codesandbox")
+    React.createElement{"h2", null, "Start editing to see some magic happen!"})
+
+
+JSX is what reads the language to append to the DOM
+JSX is syntanxic sugar for createElement
+
