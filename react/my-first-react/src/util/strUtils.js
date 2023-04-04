@@ -10,4 +10,4 @@ export const lastName = (name) => {
   return name.toUpperCase();
 };
 
-// cannot export a default a const
+// cannot default export const
