@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "shoes",
+    "description": "Shoes that will make you run faster and jump higher.",
+    "price": 20,
+    "banner_img": "https://source.unsplash.com/random?shoes"
+  },
+  {
+    "id": 2,
+    "title": "hat",
+    "description": "show your style with this uv ray protective hat!!",
+    "price": 5,
+    "banner_img": "https://source.unsplash.com/random?hat"
+  },
+  {
+    "id": 3,
+    "title": "jeans",
+    "description": "Protect those walking sticks with these flashy denim pants",
+    "price": 200,
+    "banner_img": "https://source.unsplash.com/random?jeans"
+  }
+]
