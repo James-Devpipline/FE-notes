@@ -11,7 +11,7 @@ Microservice vs Monolithic
 RESTful Routing
 (Representational State Transfer)
 HTTP request/response
-CRUD - Creat, Read, Update, Delete / Destroy
+CRUD - Create, Read, Update, Delete / Destroy
 HTTP Verbs (Methods):
   - GET -> Ask for something from the server. Reaching out and asking for something. 
   - POST -> Sending data to the backend (creation route [new record])
